@@ -229,9 +229,13 @@ window.addEventListener('load', () => {
     };
 
     const validateQuestionInput = (questionText: string, answers: IAnswer[]): boolean => {
-        // implement validation logic, return true if the input is valid
+        // implemented validation logic, return true if the input is valid
         // logic: questionText should have at least 5 characters, answers should have at least one correct answer
-        return true
+        let words = questionText.split(" ").filter((w) => w.trim() != "")
+        if (words.length >= 5 && answers.some((q) => q.isCorrect == true)) {
+            return true
+        }
+        else { return false }
     };
 
     const showCurrentPlayerBlock = () => {
